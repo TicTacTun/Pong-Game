@@ -7,16 +7,20 @@ def ball_animation():
     
   if ball.top <= 0 or ball.bottom >= height:
     ball_speed_y *= -1 # Reverse the ball speed when collide with the border
+    pygame.mixer.Sound.play(pong_sound)
   
   if ball.left <= 0: 
+    pygame.mixer.Sound.play(score_sound)
     player_score += 1
     score_time = pygame.time.get_ticks()
   
   if ball.right >= width:
+    pygame.mixer.Sound.play(score_sound)
     opponent_score += 1
     score_time = pygame.time.get_ticks()
   
   if ball.colliderect(player) and ball_speed_x > 0:
+    pygame.mixer.Sound.play(pong_sound)
     if abs(ball.right - player.left) < 10: # Make sure the ball hits the left side of the stick
       ball_speed_x *= -1 # Reverse the ball speed when collide with the sticks
     elif abs(ball.bottom - player.top) < 10 and ball_speed_y > 0: # Make sure ball hits the top
@@ -26,6 +30,7 @@ def ball_animation():
 
 
   if ball.colliderect(opponent) and ball_speed_x < 0:
+    pygame.mixer.Sound.play(pong_sound)
     if abs(ball.left - opponent.right) < 10:
       ball_speed_x *= -1
     elif abs(ball.bottom - opponent.top) < 10 and ball_speed_y > 0:
@@ -75,6 +80,7 @@ def ball_restart():
     score_time = None
     
 # General setup
+pygame.mixer.pre_init(44100, -16, 2, 512) # Initiate mixer module (Freq,Size,Channels,Buffer)
 pygame.init() # initiate all the pygame module
 clock =  pygame.time.Clock()
 
@@ -104,6 +110,10 @@ game_font = pygame.font.Font("E:\Python\pygame\Pong-Game\Koulen-Regular.ttf", 32
 
 # Timer
 score_time = True
+
+# Game Sound
+pong_sound = pygame.mixer.Sound("E:\Python\pygame\Pong-Game\pong.ogg")
+score_sound = pygame.mixer.Sound("E:\Python\pygame\Pong-Game\score.ogg")
 
 while True:
     # Handling the input
