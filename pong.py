@@ -7,15 +7,15 @@ def ball_animation():
     
   if ball.top <= 0 or ball.bottom >= height:
     ball_speed_y *= -1 # Reverse the ball speed when collide with the border
-    pygame.mixer.Sound.play(pong_sound)
+    pygame.mixer.Sound.play(wall_hit_sound)
   
   if ball.left <= 0: 
-    pygame.mixer.Sound.play(score_sound)
+    pygame.mixer.Sound.play(score2_sound)
     player_score += 1
     score_time = pygame.time.get_ticks()
   
   if ball.right >= width:
-    pygame.mixer.Sound.play(score_sound)
+    pygame.mixer.Sound.play(score2_sound)
     opponent_score += 1
     score_time = pygame.time.get_ticks()
   
@@ -62,14 +62,14 @@ def ball_restart():
   ball.center = (width/2, height/2)
 
   if current_time - score_time < 700:
-    countdown_three = game_font.render("Ready", False, light_grey)
-    screen.blit(countdown_three, (width/2 - 30, height/2 + 20))
+    countdown_three = game_font.render("Ready", False, green_color)
+    screen.blit(countdown_three, (width/2 + 10, height/2 + 20))
   if 700 < current_time - score_time < 1400:
-    countdown_two = game_font.render(" Set", False, light_grey)
-    screen.blit(countdown_two, (width/2 - 30, height/2 + 20))
+    countdown_two = game_font.render("Set", False, yellow_color)
+    screen.blit(countdown_two, (width/2 - 50, height/2 + 20))
   if 1400 < current_time - score_time < 2100:
-    countdown_one = game_font.render("  Go", False, light_grey)
-    screen.blit(countdown_one, (width/2 - 30, height/2 + 20))
+    countdown_one = game_font.render("Go", False, red_color)
+    screen.blit(countdown_one, (width/2 - 15, height/2 + 20))
 
   if current_time - score_time < 2100:
     ball_speed_x = 0 
@@ -97,6 +97,10 @@ opponent = pygame.Rect(10, height/2 - 70, 10, 140)
 
 bg_color = pygame.Color('grey12') # color of the background
 light_grey = (200,200,200) # (R,G,B)
+accent_color = (27,35,43)
+red_color = (150, 0, 0)
+green_color = (0, 150, 0)
+yellow_color = (255,215,0)
 
 ball_speed_x = 7 * random.choice((1,-1)) # Define horizontal ball speed
 ball_speed_y = 7 * random.choice((1,-1)) # Define vertical ball speed
@@ -112,8 +116,10 @@ game_font = pygame.font.Font("E:\Python\pygame\Pong-Game\Koulen-Regular.ttf", 32
 score_time = True
 
 # Game Sound
-pong_sound = pygame.mixer.Sound("E:\Python\pygame\Pong-Game\pong.ogg")
+pong_sound = pygame.mixer.Sound("E:\Python\pygame\Pong-Game\pong.wav")
 score_sound = pygame.mixer.Sound("E:\Python\pygame\Pong-Game\score.ogg")
+score2_sound = pygame.mixer.Sound("E:\Python\pygame\Pong-Game\score2.wav")
+wall_hit_sound = pygame.mixer.Sound("E:\Python\pygame\Pong-Game\wall_hit.wav")
 
 while True:
     # Handling the input
@@ -138,20 +144,20 @@ while True:
     opponent_animation()
     
     # Drawing
-    screen.fill(bg_color) 
-    pygame.draw.rect(screen, light_grey, player) # (surface, color, rect)
-    pygame.draw.rect(screen, light_grey, opponent)
+    screen.fill(accent_color) 
+    pygame.draw.rect(screen, green_color, player) # (surface, color, rect)
+    pygame.draw.rect(screen, red_color, opponent)
     pygame.draw.ellipse(screen, light_grey, ball)
     pygame.draw.aaline(screen, light_grey, (width/2, 0), (width/2, height)) # (surface, color, tuple of startpoint, tuple of endpoint)
 
     if score_time:
       ball_restart()
 
-    player_text = game_font.render(f"{player_score}", False, light_grey) # (argument, True/False, color)
+    player_text = game_font.render(f"{player_score}", False, green_color) # (argument, True/False, color)
     screen.blit(player_text,(670,460))
-    opponent_text = game_font.render(f"{opponent_score}", False, light_grey) # (argument, True/False, color)
+    opponent_text = game_font.render(f"{opponent_score}", False, red_color) # (argument, True/False, color)
     screen.blit(opponent_text,(590,460))
 
     # Updating the window
     pygame.display.flip()
-    clock.tick(60) # 60 frames per second (mention how fast the loop works)
+    clock.tick(120) # 120 frames per second (mention how fast the loop works)
