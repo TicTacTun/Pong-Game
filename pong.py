@@ -116,10 +116,10 @@ game_font = pygame.font.Font("E:\Python\pygame\Pong-Game\Koulen-Regular.ttf", 32
 score_time = True
 
 # Game Sound
-pong_sound = pygame.mixer.Sound("E:\Python\pygame\Pong-Game\pong.wav")
-score_sound = pygame.mixer.Sound("E:\Python\pygame\Pong-Game\score.ogg")
-score2_sound = pygame.mixer.Sound("E:\Python\pygame\Pong-Game\score2.wav")
-wall_hit_sound = pygame.mixer.Sound("E:\Python\pygame\Pong-Game\wall_hit.wav")
+pong_sound = pygame.mixer.Sound("E:\Python\pygame\Pong-Game\sounds\pong.wav")
+score_sound = pygame.mixer.Sound("E:\Python\pygame\Pong-Game\sounds\score.ogg")
+score2_sound = pygame.mixer.Sound("E:\Python\pygame\Pong-Game\sounds\score2.wav")
+wall_hit_sound = pygame.mixer.Sound("E:\Python\pygame\Pong-Game\sounds\wall_hit.wav")
 
 while True:
     # Handling the input
