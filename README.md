@@ -6,6 +6,8 @@ Pong is a classic arcade game that was first released in 1972. It was one of the
 In my code, I use this as a singleplayer mode which means, the opponent paddle has it's own AI movement.
 
 
+Preview: 
+
 ![Screenshot 2023-03-27 150403](https://user-images.githubusercontent.com/111201198/227896465-97808a3c-faea-44a9-b8dd-7a4b21218fd0.jpg)
 
 
