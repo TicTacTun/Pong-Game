@@ -112,7 +112,7 @@ player_score = 0
 opponent_score = 0
 game_font = pygame.font.Font("Pong-Game/Koulen-Regular.ttf", 32) # (font name, size)
 #
-# USE relative path for it to work on all computers :)
+# Use relative path for it to work on all computers :)
 # This includes the fonts and sound files 
 
 
