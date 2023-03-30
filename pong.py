@@ -110,16 +110,20 @@ opponent_speed = 7 # Change the value to change difficulty
 # Text Variables
 player_score = 0
 opponent_score = 0
-game_font = pygame.font.Font("E:\Python\pygame\Pong-Game\Koulen-Regular.ttf", 32) # (font name, size)
+game_font = pygame.font.Font("Pong-Game/Koulen-Regular.ttf", 32) # (font name, size)
+#
+# Use relative path for it to work on all computers :)
+# This includes the fonts and sound files 
+
 
 # Timer
 score_time = True
 
 # Game Sound
-pong_sound = pygame.mixer.Sound("E:\Python\pygame\Pong-Game\sounds\pong.wav")
-score_sound = pygame.mixer.Sound("E:\Python\pygame\Pong-Game\sounds\score.ogg")
-score2_sound = pygame.mixer.Sound("E:\Python\pygame\Pong-Game\sounds\score2.wav")
-wall_hit_sound = pygame.mixer.Sound("E:\Python\pygame\Pong-Game\sounds\wall_hit.wav")
+pong_sound = pygame.mixer.Sound("Pong-Game/sounds/pong.wav")
+score_sound = pygame.mixer.Sound("Pong-Game/sounds/score.ogg")
+score2_sound = pygame.mixer.Sound("Pong-Game/sounds/score2.wav")
+wall_hit_sound = pygame.mixer.Sound("Pong-Game/sounds/wall_hit.wav")
 
 while True:
     # Handling the input
